@@ -8,7 +8,13 @@ A little ugly
 
 只有一些相当简单的功能，只能画框，箭头请用< > ^ V 将就下 =-=
 
-             
+Tools -> new plugin,
+
+Then the sublime text will create a new plugin file for you
+copy the code of drawit.py to the it
+
+把drawit.py的代码，复制到sublime给你生成的新插件文件中
+
 You may need set your keybidings like this:
 设置你的按键map：
  
