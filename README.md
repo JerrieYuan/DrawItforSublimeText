@@ -86,9 +86,9 @@ Save it.
 Then , you can press "Ctrl + ↑", "Ctrl + ←", "Ctrl + →", "Ctrl + ↓" to draw a square.
 
 In fact,this is my first Python Script.
-If there is any bug, please forgive me and conatct me with email jerrieyuan@hotmail.com
+If there is any bug, please forgive me and conatct me with email jerrieyuan@hotmail.com or submit an issue
 Thanks!
 
 这是我写的第一个Python脚本，之前从没接触过Python，没想到上手把功能写完了。
 磕磕碰碰的。
-如果有任何bug，或者觉得代码烂，请谅解，并通过邮箱联系我：jerrieyuan@hotmail.com
+如果有任何bug，或者觉得代码烂，请谅解，并通过邮箱联系我：jerrieyuan@hotmail.com 或提交 issue 。。
