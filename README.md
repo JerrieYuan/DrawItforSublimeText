@@ -10,8 +10,8 @@ A little ugly
 
 Tools -> new plugin,
 
-Then the sublime text will create a new plugin file for you
-copy the code of drawit.py to the it
+Then the sublime text will create a new plugin file for you。
+copy the code of drawit.py to  it
 
 把drawit.py的代码，复制到sublime给你生成的新插件文件中
 
