@@ -3,6 +3,17 @@ A sublime text plugin to draw square(一个sublime text的插件，用于绘制�
 
 ![image](http://ww2.sinaimg.cn/large/a6a49aa8gw1f0oxmetfquj20ks0ixjux.jpg)
 
+```
+
+                                        +----------+
+               +-----------+            |          |
+               |           |         +--> drawit   |
+               | sublime   |>--------+  |          |
+               |  text2    |            +----------+
+               |           |
+               +-----------+
+```
+
 It only has some Simple functions  
 A little ugly          
 
