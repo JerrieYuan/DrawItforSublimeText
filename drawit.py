@@ -8,6 +8,7 @@ class DownCommand(sublime_plugin.TextCommand):
         region = regions[0]
         point = region.begin()
         old = self.view.substr(point)
+        old_left = self.view.substr(point-1)
         size = self.view.size()
         height,width = self.view.rowcol(size)
         x = 0
@@ -15,14 +16,19 @@ class DownCommand(sublime_plugin.TextCommand):
         y,x = self.view.rowcol(point)
 
         #self.view.insert(edit,point,"["+old+"]")
-        if old != "" and old != "\n":
-            self.view.run_command('right_delete')
-
-        if old != "|":
-            self.view.insert(edit,point,"|")
-        else:
+        if old == "\n" :
             self.view.insert(edit,point," ")
 
+        newregion = sublime.Region(point,point+1)
+
+        if(old == "-" or old_left == "-"):
+            self.view.replace(edit, newregion, "+")
+        else:
+            if(old !="+" and old_left!="+"):
+                self.view.replace(edit, newregion, "|")
+
+        #self.view.insert(edit,point,"|")
+        
         if  y == height :
             self.view.insert(edit,self.view.size(),"\n")
 
@@ -32,16 +38,27 @@ class DownCommand(sublime_plugin.TextCommand):
         end = newline.size()
         num = 0
         space = ""
-        if end<x:
-            num = x - end
+        if end<x+1:
+            num = x+ 1 - end
             for i in xrange(0,num):
                 space = space + " "
 
             self.view.insert(edit,end+n,space)
 
+        newregion = sublime.Region(x+n,x+n+1)
+        point = x+n
+        old = self.view.substr(point)
+        old_left = self.view.substr(point-1)
+        if(old == "-" or old_left == "-"):
+            self.view.replace(edit, newregion, "+")
+        else:
+            if(old !="+" and old_left!="+"):
+                self.view.replace(edit, newregion, "|")
+
         newregion = sublime.Region(x+n,x+n)
         regions.clear()
         regions.add(newregion)
+
                               
 
 class UpCommand(sublime_plugin.TextCommand):
@@ -50,13 +67,17 @@ class UpCommand(sublime_plugin.TextCommand):
         region = regions[0]
         point = region.begin()
         old = self.view.substr(point)
-        if old != "" and old != "\n":
-            self.view.run_command('right_delete')
+        old_left = self.view.substr(point-1)
+        if old == "\n" :
+            self.view.insert(edit,point," ")
 
-        if old != "|":                       
-            self.view.insert(edit,point,"|") 
-        else:                                
-            self.view.insert(edit,point," ") 
+        newregion = sublime.Region(point,point+1)
+
+        if(old == "-" or old_left == "-"):
+            self.view.replace(edit, newregion, "+")
+        else:
+            if(old !="+" and old_left!="+"):
+                self.view.replace(edit, newregion, "|")
                                              
         x = 0                                
         y = 0                               
@@ -67,13 +88,22 @@ class UpCommand(sublime_plugin.TextCommand):
         end = newline.size()
         num = 0
         space = ""
-        if end<x:
-            num = x - end
+        if end<x+1:
+            num = x + 1 - end
             for i in xrange(0,num):
                 space = space + " "
 
             self.view.insert(edit,end+n,space)
 
+        point = x+n
+        old = self.view.substr(point)
+        old_left = self.view.substr(point-1)
+        newregion = sublime.Region(x+n,x+n+1)
+        if(old == "-" or old_left == "-"):
+            self.view.replace(edit, newregion, "+")
+        else:
+            if(old !="+" and old_left!="+"):
+                self.view.replace(edit, newregion, "|")
         newregion = sublime.Region(x+n,x+n)
         regions.clear()
         regions.add(newregion)
@@ -83,18 +113,26 @@ class LeftCommand(sublime_plugin.TextCommand):
         regions = self.view.sel()
         region = regions[0]
         point = region.begin()
+        old = self.view.substr(point)
+        old_left = self.view.substr(point-1)
         x = 0
         y = 0
         y,x = self.view.rowcol(point)
         if x>0:
             newregion = sublime.Region(point-1,point)
-            if self.view.substr(newregion) == "-":
-                self.view.replace(edit, newregion, " ")
+            right_region = sublime.Region(point,point+1)
+            if(old == "|"):
+                self.view.replace(edit, right_region, "+")
+            
+            if(old_left=="|"):
+                self.view.replace(edit, newregion, "+")
             else:
-                self.view.replace(edit, newregion, "-")
-        
+                if old_left!="+":
+                    self.view.replace(edit, newregion, "-")
+
             newregion = sublime.Region(point-1,point-1)
             regions.clear()
+
             regions.add(newregion)
 
 
@@ -104,10 +142,25 @@ class RightCommand(sublime_plugin.TextCommand):
         region = regions[0]
         point = region.begin()
         old = self.view.substr(point)
-        if old != "" and old != "\n":
-            self.view.run_command('right_delete')
-                                                          
-        if old != "-":
-            self.view.insert(edit,point,"-")
-        else:
+        size = self.view.size()
+        height,width = self.view.rowcol(size)
+        x = 0
+        y = 0
+        y,x = self.view.rowcol(point)
+        if  y == height :
+            self.view.insert(edit,self.view.size(),"\n")
+
+        if old == "\n":
             self.view.insert(edit,point," ")
+
+        newregion = sublime.Region(point,point+1)                                           
+        if old == "|":
+            self.view.replace(edit, newregion, "+")
+        else:
+            if old != "+":
+                self.view.replace(edit, newregion, "-")
+
+        newregion = sublime.Region(point+1,point+1)
+        regions.clear()
+        regions.add(newregion)
+        
