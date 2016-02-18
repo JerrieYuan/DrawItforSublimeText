@@ -1,7 +1,7 @@
 # DrawItforSublimeText
 A sublime text plugin to draw square
 
-** Only for Sublime Text2 **
+**Only for Sublime Text2**
 
 
 ![image](https://camo.githubusercontent.com/441da231d776da1fe52e4060ed1e4fbb73b76bf3/687474703a2f2f7777322e73696e61696d672e636e2f6c617267652f613661343961613867773166306f786d65746671756a32306b733069786a75782e6a7067)
