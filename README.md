@@ -1,10 +1,21 @@
-# DrawItforSublimeText
-A sublime text plugin to draw square
+# Subl 小工具
+
+一些写来自用的Sublime Text小工具，如果能给你的工作带来便捷，就再好不过了。
+
+[keymap](https://code.aliyun.com/JRY/subltips/blob/master/Default.sublime-keymap)
+
+## DrawItforSublimeText
 
 **Only for Sublime Text2**
 
+[代码](https://code.aliyun.com/JRY/subltips/blob/master/drawit.py)
 
-![image](https://camo.githubusercontent.com/441da231d776da1fe52e4060ed1e4fbb73b76bf3/687474703a2f2f7777322e73696e61696d672e636e2f6c617267652f613661343961613867773166306f786d65746671756a32306b733069786a75782e6a7067)
+一个sublime text的插件，用于绘制矩形
+
+只有一些相当简单的功能，只能画框，箭头请用< > ^ V 将就下。
+
+效果如下：
+
 
 ```
 
@@ -22,109 +33,8 @@ A little ugly                                           |       |
                                                         |       |
                                                         +-------+
 ```
-Tools -> new plugin,
-
-Then the sublime text will create a new plugin file for you.
-
-copy the code of drawit.py to  it
 
 
-You may need set your keybidings like this:
-
-  Preferences ---->  Key Bidings - Users
-
-Add the followings:
-
-```json
-    {
-        "command":"up",
-        "keys":[
-            "ctrl+up"
-        ]
-    },
-    {
-        "command":"down",
-        "keys":[
-            "ctrl+down"
-        ]
-    },
-    {
-        "command":"left",
-        "keys":[
-            "ctrl+left"
-        ]
-    },
-    {
-        "command":"right",
-        "keys":[
-            "ctrl+right"
-        ]
-    },
-    {
-        "command":"space",
-        "keys":[
-            "ctrl+space"
-        ]
-    }
-
-```
-
-If your key bidings file is empty,after you edit ,it may like this:
-
-```json
-[
-    {
-        "command":"up",
-        "keys":[
-            "ctrl+up"
-        ]
-    },
-    {
-        "command":"down",
-        "keys":[
-            "ctrl+down"
-        ]
-    },
-    {
-        "command":"left",
-        "keys":[
-            "ctrl+left"
-        ]
-    },
-    {
-        "command":"right",
-        "keys":[
-            "ctrl+right"
-        ]
-    },
-    {
-        "command":"space",
-        "keys":[
-            "ctrl+space"
-        ]
-    }
-]
-```
-
-Save it.
-
-Then , you can press "Ctrl + ↑", "Ctrl + ←", "Ctrl + →", "Ctrl + ↓" "Ctrl + Space" to draw a square.
-
-Ctrl + Space is for eraser.
-
-In fact,this is my first Python Script.
-
-If there is any bug, please forgive me and conatct me with email jerrieyuan@hotmail.com or submit an issue.
-
-Thanks!
-
-
-
-
-中文版：
-一个sublime text的插件，用于绘制矩形
-
-只有一些相当简单的功能，只能画框，箭头请用< > ^ V 将就下 =-=
 
 Tools -> new plugin,
 
@@ -168,50 +78,32 @@ Tools -> new plugin,
         ]
     }
 
+
 ```
 
-如果一开始它是空的，修改后将会是这个样子：
+## GoClean
+
+[代码](https://code.aliyun.com/JRY/subltips/blob/master/goclean.py)
+
+当你自己在编写库的时候，每次保存后，文件并不会重新编译成.a文件。
+
+在linux下，安装gosublime似乎能在import一个缺失的包时，自动编译出包文件。但如果一个包本来是存在的，它的代码更新后，不会去重新编译包。
+
+并且，在windows下，似乎自动编译缺失包这个功能不大能正常运行……
+
+这个工具，在你编辑好代码后，按下CTRL+SHIFT+C，自动把包编译到pkg目录下，其实就是运行了一次go install。
+
+因为go install 本身会检测代码和包的日期时间，所以如果在上次编译后，代码没有修改，则不会重新编译。
+
+需要修改key map如下:
 
 ```json
 [
-    {
-        "command":"up",
+	{
+        "command":"goclean",
         "keys":[
-            "ctrl+up"
-        ]
-    },
-    {
-        "command":"down",
-        "keys":[
-            "ctrl+down"
-        ]
-    },
-    {
-        "command":"left",
-        "keys":[
-            "ctrl+left"
-        ]
-    },
-    {
-        "command":"right",
-        "keys":[
-            "ctrl+right"
-        ]
-    },
-    {
-        "command":"space",
-        "keys":[
-            "ctrl+space"
+            "ctrl+shift+c"
         ]
     }
 ]
 ```
-
-保存
-
-
-这是我写的第一个Python脚本，之前从没接触过Python，没想到上手把功能写完了。
-
-磕磕碰碰的。
-
-如果有任何bug，或者觉得代码烂，请谅解，并通过邮箱联系我：jerrieyuan@hotmail.com 或提交 issue 。。
