@@ -2,13 +2,13 @@
 
 一些写来自用的Sublime Text小工具，如果能给你的工作带来便捷，就再好不过了。
 
-[keymap](https://github.com/JerrieYuan/DrawItforSublimeText/blob/master/Default.sublime-keymap)
+[keymap](https://code.aliyun.com/JRY/subltips/blob/master/Default.sublime-keymap)
 
 ## DrawItforSublimeText
 
-**Only for Sublime Text2**
+支持sublime Text 2/3
 
-[代码](https://github.com/JerrieYuan/DrawItforSublimeText/blob/master/drawit.py)
+（橡皮擦功能正在编写中……摔！）
 
 一个sublime text的插件，用于绘制矩形
 
@@ -38,7 +38,7 @@ A little ugly                                           |       |
 
 Tools -> new plugin,
 
-把drawit.py的代码，复制到sublime给你生成的新插件文件中
+把drawit_v2.py/drawit_v3.py（对应相应的sublime版本）的代码，复制到sublime给你生成的新插件文件中
 
 设置你的按键map：
 
@@ -83,7 +83,7 @@ Tools -> new plugin,
 
 ## GoClean
 
-[代码](https://github.com/JerrieYuan/DrawItforSublimeText/blob/master/goclean.py)
+[代码](https://code.aliyun.com/JRY/subltips/blob/master/goclean.py)
 
 当你自己在编写库的时候，每次保存后，文件并不会重新编译成.a文件。
 
